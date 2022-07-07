@@ -1,0 +1,77 @@
+﻿@model IEnumerable<_2parcial.Empleado>
+
+@{
+    ViewBag.Title = "Empleado";
+}
+
+<div class="p-2" style="display:flex; justify-content:space-between; align-items:center;">
+    <h2>Lista de Empleados</h2>
+
+    <a href='@Url.Action("Create", "Empleadoes")' class="optionUpBtn text-light bg-success">
+        <i class="fas fa-plus"></i>
+        Crear Empleado
+    </a>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaIngreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departamento.Descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departamento.Descripcion)
+            </td>
+            <td>
+            <td class="d-flex gap-2">
+                <a href='@Url.Action("Edit", "Empleadoes" , new { id = item.EmpID })' class="optionUpBtn text-light bg-warning">
+                    <i class="fas fa-plus"></i>
+                    Editar
+                </a>
+                <a href='@Url.Action("Details", "Empleadoes" , new { id = item.EmpID })' class="optionUpBtn text-light bg-secondary">
+                    <i class="fas fa-info"></i>
+                    Detalles
+                </a>
+                <a href='@Url.Action("Delete", "Empleadoes" , new { id = item.EmpID })' class="optionUpBtn text-light bg-danger">
+                    <i class="fas fa-trash-alt"></i>
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

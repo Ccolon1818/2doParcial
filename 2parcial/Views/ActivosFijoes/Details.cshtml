@@ -1,0 +1,73 @@
+﻿@model _2parcial.ActivosFijo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div style="display:flex; justify-content:space-between; align-items:center;">
+    <h2>Detalles de: @Html.DisplayFor(model => model.Descripcion)</h2>
+
+    <div>
+        <a href='@Url.Action("Index", "ActivosFijoes")' class="optionUpBtn text-light bg-secondary">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+    </div>
+</div>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd class="mb-3">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRegistro)
+        </dt>
+
+        <dd class="mb-3">
+            @Html.DisplayFor(model => model.FechaRegistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd class="mb-3">
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DepreAcumulada)
+        </dt>
+
+        <dd class="mb-3">
+            @Html.DisplayFor(model => model.DepreAcumulada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Departamento.Descripcion)
+        </dt>
+
+        <dd class="mb-3">
+            @Html.DisplayFor(model => model.Departamento.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoDeActivo.Descripcion)
+        </dt>
+
+        <dd class="mb-3">
+            @Html.DisplayFor(model => model.TipoDeActivo.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.AFijoID }, new { @class = "optionTableBtn text-light bg-warning" })
+</p>

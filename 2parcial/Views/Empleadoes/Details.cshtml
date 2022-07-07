@@ -1,0 +1,74 @@
+﻿@model _2parcial.Empleado
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div style="display:flex; justify-content:space-between; align-items:center;">
+    <h2>Detalles de: @Html.DisplayFor(model => model.Nombre)</h2>
+
+    <div>
+        <a href='@Url.Action("Index", "Empleadoes")' class="optionUpBtn text-light bg-secondary">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+    </div>
+</div>
+
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd class="mb-3">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </dt>
+
+        <dd class="mb-3">
+            @Html.DisplayFor(model => model.Cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+
+        <dd class="mb-3">
+            @Html.DisplayFor(model => model.Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaIngreso)
+        </dt>
+
+        <dd class="mb-3">
+            @Html.DisplayFor(model => model.FechaIngreso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd class="mb-3">
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Departamento.Descripcion)
+        </dt>
+
+        <dd class="mb-3">
+            @Html.DisplayFor(model => model.Departamento.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.EmpID }, new { @class = "optionTableBtn text-light bg-warning" })
+</p>

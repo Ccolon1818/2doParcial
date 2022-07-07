@@ -1,0 +1,57 @@
+﻿@model _2parcial.TipoDeActivo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div style="display:flex; justify-content:space-between; align-items:center;">
+    <h2>Detalles de: @Html.DisplayFor(model => model.Descripcion)</h2>
+
+    <div>
+        <a href='@Url.Action("Index", "TipoDeActivoes")' class="optionUpBtn text-light bg-secondary">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+    </div>
+</div>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd class="mb-3">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CCCompra)
+        </dt>
+
+        <dd class="mb-3">
+            @Html.DisplayFor(model => model.CCCompra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CCDepreciacion)
+        </dt>
+
+        <dd class="mb-3">
+            @Html.DisplayFor(model => model.CCDepreciacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd class="mb-3">
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.TActivoID }, new { @class = "optionTableBtn text-light bg-warning" })
+</p>

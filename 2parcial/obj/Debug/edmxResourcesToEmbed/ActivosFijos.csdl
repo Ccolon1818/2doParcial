@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ActivosFijosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ActivosFijo">
+    <Key>
+      <PropertyRef Name="AFijoID" />
+    </Key>
+    <Property Name="AFijoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DepID" Type="Int32" Nullable="false" />
+    <Property Name="TActivoID" Type="Int32" Nullable="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Valor" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="DepreAcumulada" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Departamento" Relationship="Self.FK__ActivosFi__DepID__3D5E1FD2" FromRole="ActivosFijos" ToRole="Departamentos" />
+    <NavigationProperty Name="TipoDeActivo" Relationship="Self.FK__ActivosFi__TActi__3E52440B" FromRole="ActivosFijos" ToRole="TipoDeActivos" />
+  </EntityType>
+  <EntityType Name="Departamento">
+    <Key>
+      <PropertyRef Name="DepID" />
+    </Key>
+    <Property Name="DepID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="ActivosFijos" Relationship="Self.FK__ActivosFi__DepID__3D5E1FD2" FromRole="Departamentos" ToRole="ActivosFijos" />
+    <NavigationProperty Name="Empleados" Relationship="Self.FK__Empleados__DepID__3A81B327" FromRole="Departamentos" ToRole="Empleados" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cedula" Type="Int64" Nullable="false" />
+    <Property Name="DepID" Type="Int32" Nullable="false" />
+    <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Departamento" Relationship="Self.FK__Empleados__DepID__3A81B327" FromRole="Empleados" ToRole="Departamentos" />
+  </EntityType>
+  <EntityType Name="TipoDeActivo">
+    <Key>
+      <PropertyRef Name="TActivoID" />
+    </Key>
+    <Property Name="TActivoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CCCompra" Type="Int32" Nullable="false" />
+    <Property Name="CCDepreciacion" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="ActivosFijos" Relationship="Self.FK__ActivosFi__TActi__3E52440B" FromRole="TipoDeActivos" ToRole="ActivosFijos" />
+  </EntityType>
+  <Association Name="FK__ActivosFi__DepID__3D5E1FD2">
+    <End Role="Departamentos" Type="Self.Departamento" Multiplicity="1" />
+    <End Role="ActivosFijos" Type="Self.ActivosFijo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamentos">
+        <PropertyRef Name="DepID" />
+      </Principal>
+      <Dependent Role="ActivosFijos">
+        <PropertyRef Name="DepID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ActivosFi__TActi__3E52440B">
+    <End Role="TipoDeActivos" Type="Self.TipoDeActivo" Multiplicity="1" />
+    <End Role="ActivosFijos" Type="Self.ActivosFijo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoDeActivos">
+        <PropertyRef Name="TActivoID" />
+      </Principal>
+      <Dependent Role="ActivosFijos">
+        <PropertyRef Name="TActivoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Empleados__DepID__3A81B327">
+    <End Role="Departamentos" Type="Self.Departamento" Multiplicity="1" />
+    <End Role="Empleados" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamentos">
+        <PropertyRef Name="DepID" />
+      </Principal>
+      <Dependent Role="Empleados">
+        <PropertyRef Name="DepID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ActivosFijosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ActivosFijos" EntityType="Self.ActivosFijo" />
+    <EntitySet Name="Departamentos" EntityType="Self.Departamento" />
+    <EntitySet Name="Empleados" EntityType="Self.Empleado" />
+    <EntitySet Name="TipoDeActivos" EntityType="Self.TipoDeActivo" />
+    <AssociationSet Name="FK__ActivosFi__DepID__3D5E1FD2" Association="Self.FK__ActivosFi__DepID__3D5E1FD2">
+      <End Role="Departamentos" EntitySet="Departamentos" />
+      <End Role="ActivosFijos" EntitySet="ActivosFijos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ActivosFi__TActi__3E52440B" Association="Self.FK__ActivosFi__TActi__3E52440B">
+      <End Role="TipoDeActivos" EntitySet="TipoDeActivos" />
+      <End Role="ActivosFijos" EntitySet="ActivosFijos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Empleados__DepID__3A81B327" Association="Self.FK__Empleados__DepID__3A81B327">
+      <End Role="Departamentos" EntitySet="Departamentos" />
+      <End Role="Empleados" EntitySet="Empleados" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

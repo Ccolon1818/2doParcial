@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ActivosFijosModelStoreContainer" CdmEntityContainer="ActivosFijosEntities">
+    <EntitySetMapping Name="ActivosFijos">
+      <EntityTypeMapping TypeName="ActivosFijosModel.ActivosFijo">
+        <MappingFragment StoreEntitySet="ActivosFijos">
+          <ScalarProperty Name="AFijoID" ColumnName="AFijoID" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="DepID" ColumnName="DepID" />
+          <ScalarProperty Name="TActivoID" ColumnName="TActivoID" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="DepreAcumulada" ColumnName="DepreAcumulada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departamentos">
+      <EntityTypeMapping TypeName="ActivosFijosModel.Departamento">
+        <MappingFragment StoreEntitySet="Departamentos">
+          <ScalarProperty Name="DepID" ColumnName="DepID" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleados">
+      <EntityTypeMapping TypeName="ActivosFijosModel.Empleado">
+        <MappingFragment StoreEntitySet="Empleados">
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="DepID" ColumnName="DepID" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoDeActivos">
+      <EntityTypeMapping TypeName="ActivosFijosModel.TipoDeActivo">
+        <MappingFragment StoreEntitySet="TipoDeActivos">
+          <ScalarProperty Name="TActivoID" ColumnName="TActivoID" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="CCCompra" ColumnName="CCCompra" />
+          <ScalarProperty Name="CCDepreciacion" ColumnName="CCDepreciacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

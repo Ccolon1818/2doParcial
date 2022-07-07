@@ -1,0 +1,64 @@
+﻿@model IEnumerable<_2parcial.TipoDeActivo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="p-2" style="display:flex; justify-content:space-between; align-items:center;">
+    <h2>Lista de Tipo de Activos</h2>
+
+    <a href='@Url.Action("Create", "TipoDeActivoes")' class="optionUpBtn text-light bg-success">
+        <i class="fas fa-plus"></i>
+        Crear Tipo de Activo
+    </a>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CCCompra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CCDepreciacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CCCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CCDepreciacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td class="d-flex gap-2">
+                <a href='@Url.Action("Edit", "TipoDeActivoes" , new { id = item.TActivoID })' class="optionUpBtn text-light bg-warning">
+                    <i class="fas fa-plus"></i>
+                    Editar
+                </a>
+                <a href='@Url.Action("Details", "TipoDeActivoes" , new { id = item.TActivoID })' class="optionUpBtn text-light bg-secondary">
+                    <i class="fas fa-info"></i>
+                    Detalles
+                </a>
+                <a href='@Url.Action("Delete", "TipoDeActivoes" , new { id = item.TActivoID })' class="optionUpBtn text-light bg-danger">
+                    <i class="fas fa-trash-alt"></i>
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
